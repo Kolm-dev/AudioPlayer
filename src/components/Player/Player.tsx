@@ -54,6 +54,7 @@ export const Player = () => {
 			></audio>
 
 			<PlayList
+				setPlaylist={setPlaylist}
 				player={audio}
 				playlist={playlist}
 			/>
