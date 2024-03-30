@@ -34,3 +34,7 @@ HTML5 audio element.
 ## Demo
 
 You can view a live demo [here](https://audio-player-lime.vercel.app/)
+
+Screenshot:
+
+![Audio Player](https://i2.paste.pics/404a8b7184cdf1b15db42b89ecbc0819.png)
