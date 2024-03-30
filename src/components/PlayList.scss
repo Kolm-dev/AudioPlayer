@@ -6,15 +6,17 @@
 	overflow-y: auto;
 	justify-content: center;
 	margin-top: 30px;
-
 	// для экранов с шириной больше 768px
 	@media screen and (min-width: 768px) {
 		grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 		width: 100%;
-		//центрирование содержимого
 	}
-
-	
+	@media screen and (max-width: 768px) {
+		.playlist-container {
+			max-height: calc(100vh - 60px);
+			overflow-y: auto;
+		}
+	}
 }
 
 .playlist-item {
