@@ -1,30 +1,36 @@
-# React + TypeScript + Vite
+# Audio Player
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple audio player that can play audio files from the local file system. It is built using React.js and the
+HTML5 audio element.
 
-Currently, two official plugins are available:
+## Technologies
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React.js
+- TypeScript
+- Vite
+- rc-progress
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Play/Pause/Stop audio
+- Add audio files to the playlist
+- Adaptive UI
 
-- Configure the top-level `parserOptions` property like this:
+## Installation
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+1. Clone the repository
+2. Run `yarn` or `npm install` to install the dependencies
+3. Run `yarn dev` or `npm run dev` to start the development server
+4. Open `http://localhost:5173` in your browser, 5173 is the default port but you can change it in the `vite.config.js`
+   file if you want
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Usage
+
+1. Click on the `Add` button to add audio files to the playlist
+2. Click on the `Play` button to play the audio
+3. Click on the `Pause` button to pause the audio
+4. Choose an audio file from the playlist to play it
+
+## Demo
+
+You can view a live demo [here](https://audio-player-lime.vercel.app/)
