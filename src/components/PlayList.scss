@@ -1,0 +1,47 @@
+.playlist-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	gap: 10px;
+	width: calc(100% - 40px);
+	overflow-y: auto;
+	justify-content: center;
+	margin-top: 30px;
+
+	// для экранов с шириной больше 768px
+	@media screen and (min-width: 768px) {
+		grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+		width: 100%;
+		//центрирование содержимого
+	}
+
+	
+}
+
+.playlist-item {
+	background-color: #fff;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	padding: 10px;
+	border-bottom: 1px solid #a1a1a1;
+}
+
+.playlist-item:last-child {
+	border-bottom: none;
+}
+
+.playlist-item:hover {
+	background-color: #f1f1f1;
+}
+
+.playlist-item__title {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.playlist-item__duration {
+	font-size: 17px;
+}

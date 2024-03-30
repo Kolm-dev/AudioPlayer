@@ -1,0 +1,12 @@
+.player-container {
+	padding: 10px;
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+
+	// для экранов с шириной не больше 768px
+	@media screen and (max-width: 768px) {
+		align-items: center;
+		
+	}
+}

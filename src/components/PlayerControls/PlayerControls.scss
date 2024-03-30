@@ -1,0 +1,54 @@
+.player_control {
+	padding: 10px;
+	display: flex;
+	gap: 10px;
+	justify-content: center;
+
+	@media screen and (min-width: 768px) {
+		padding: 20px;
+
+		.control_button {
+			width: 60px;
+			height: 60px;
+		}
+	}
+}
+
+.control_button {
+	border: none;
+	border-radius: 5px;
+	color: #000;
+	cursor: pointer;
+	font-size: 1.5em; // 24px
+	padding: 10px;
+	text-transform: uppercase;
+
+	&:focus {
+		background-color: #bababa;
+		border: none;
+		outline: none;
+	}
+}
+
+.play,
+.stop,
+.pause {
+	width: 50px;
+	height: 50px;
+	background-color: transparent;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.play {
+	background-image: url(icons/play.svg);
+}
+
+.stop {
+	background-image: url(icons/stop.svg);
+}
+
+.pause {
+	background-image: url(icons/pause.svg);
+}
