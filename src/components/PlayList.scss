@@ -32,6 +32,14 @@
 	border-bottom: 1px solid #a1a1a1;
 	cursor: pointer;
 	position: relative;
+	overflow: hidden;
+}
+
+.playlist-item__title {
+	flex-grow: 1;
+	margin-right: 40px;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .playlist-item__delete {
@@ -47,6 +55,8 @@
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center center;
+	flex-shrink: 0;
+	margin-left: auto;
 }
 
 .playlist-item:last-child {
