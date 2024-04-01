@@ -5,14 +5,22 @@ import { PlayerProgress } from "../PlayerProgress/PlayerProgress";
 import "./Player.scss";
 import { PlayList } from "../PlayList";
 import { InputAddSong } from "../InputAddSong";
+
 interface Song {
 	title: string;
 	url: string;
 }
 
+export enum PlayerStatus {
+	PLAY = "play",
+	STOP = "stop",
+	PAUSE = "pause",
+}
+
 export const Player = () => {
 	const audio = useRef<HTMLAudioElement>(null);
 	const [isModalVisible] = useState(true);
+	const [status, setStatus] = useState<PlayerStatus>(PlayerStatus.STOP);
 	const [playlist, setPlaylist] = useState<Song[]>([
 		{
 			title: "Sound 1",
@@ -45,7 +53,11 @@ export const Player = () => {
 
 	return (
 		<div className="player-container">
-			<PlayerControls player={audio} />
+			<PlayerControls
+				setStatus={setStatus}
+				status={status}
+				player={audio}
+			/>
 			<PlayerProgress player={audio} />
 			<audio
 				ref={audio}
@@ -55,6 +67,7 @@ export const Player = () => {
 
 			<PlayList
 				setPlaylist={setPlaylist}
+				setStatus={setStatus as React.Dispatch<React.SetStateAction<PlayerStatus>>}
 				player={audio}
 				playlist={playlist}
 			/>

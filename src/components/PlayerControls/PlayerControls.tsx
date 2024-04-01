@@ -1,18 +1,14 @@
 import React from "react";
 import "./PlayerControls.scss";
-
+import { PlayerStatus } from "../Player/Player";
 interface PlayerControlsProps {
 	player: React.RefObject<HTMLAudioElement> | null;
+	setStatus: React.Dispatch<React.SetStateAction<PlayerStatus>>;
+	status: PlayerStatus;
 }
 
-enum PlayerStatus {
-	PLAY = "play",
-	STOP = "stop",
-	PAUSE = "pause",
-}
 export const PlayerControls = (props: PlayerControlsProps) => {
-	const { player } = props;
-	const [status, setStatus] = React.useState<PlayerStatus>(PlayerStatus.STOP);
+	const { player, status, setStatus } = props;
 
 	const playAduio = () => {
 		if (!player || !player.current) return;

@@ -1,4 +1,5 @@
 import "./PlayList.scss";
+import { PlayerStatus } from "./Player/Player";
 
 interface PlayListProps {
 	playlist: {
@@ -7,13 +8,15 @@ interface PlayListProps {
 	}[];
 	setPlaylist: React.Dispatch<React.SetStateAction<{ title: string; url: string }[]>>;
 	player: React.RefObject<HTMLAudioElement>;
+	setStatus: React.Dispatch<React.SetStateAction<PlayerStatus>>;
 }
 
-export const PlayList = ({ playlist, setPlaylist, player }: PlayListProps) => {
+export const PlayList = ({ playlist, setStatus, setPlaylist, player }: PlayListProps) => {
 	const changeSong = (player: React.RefObject<HTMLAudioElement>, url: string) => {
 		if (!player.current) return;
 		player.current.src = url;
 		player.current?.play();
+		setStatus(PlayerStatus.PLAY);
 	};
 
 	const removeSong = (title: string) => {
