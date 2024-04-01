@@ -5,10 +5,11 @@ interface PlayerControlsProps {
 	player: React.RefObject<HTMLAudioElement> | null;
 	setStatus: React.Dispatch<React.SetStateAction<PlayerStatus>>;
 	status: PlayerStatus;
+	playListLength: number;
 }
 
 export const PlayerControls = (props: PlayerControlsProps) => {
-	const { player, status, setStatus } = props;
+	const { player, status, playListLength, setStatus } = props;
 
 	const playAduio = () => {
 		if (!player || !player.current) return;
@@ -50,7 +51,10 @@ export const PlayerControls = (props: PlayerControlsProps) => {
 		></button>
 	);
 	return (
-		<div className="player_control">
+		<div
+			style={{ display: playListLength ? "flex" : "none" }}
+			className="player_control"
+		>
 			{status === PlayerStatus.PLAY ? buttonPause : buttonPlay}
 			{buttonStop}
 		</div>

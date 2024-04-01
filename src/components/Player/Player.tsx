@@ -22,11 +22,11 @@ export const Player = () => {
 	const [isModalVisible] = useState(true);
 	const [status, setStatus] = useState<PlayerStatus>(PlayerStatus.STOP);
 	const [playlist, setPlaylist] = useState<Song[]>([
+		{ title: "Where Is My Mind", url: "songs/Where Is My Mind.mp3" },
 		{ title: "A Call The Soul", url: "songs/A call the soul.mp3" },
 		{ title: "Sample Sound 2", url: "songs/Sample sound 2.mp3" },
 		{ title: "Sample Sound", url: "songs/Sample sound.mp3" },
 		{ title: "Weekends", url: "songs/Weekends.mp3" },
-		{ title: "Where Is My Mind", url: "songs/Where Is My Mind.mp3" },
 	]);
 
 	const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,17 +41,31 @@ export const Player = () => {
 		setPlaylist([...playlist, newSong]);
 	};
 
+	const srcHandler = (playlist: Song[]) => {
+		if (playlist.length === 0) {
+			return "";
+		}
+
+		return playlist[0].url;
+	};
+
+	const playListLength = playlist.length;
+
 	return (
 		<div className="player-container">
 			<PlayerControls
 				setStatus={setStatus}
 				status={status}
+				playListLength={playListLength}
 				player={audio}
 			/>
-			<PlayerProgress player={audio} />
+			<PlayerProgress
+				playListLength={playListLength}
+				player={audio}
+			/>
 			<audio
 				ref={audio}
-				src=""
+				src={srcHandler(playlist)}
 				preload="metadata"
 			></audio>
 

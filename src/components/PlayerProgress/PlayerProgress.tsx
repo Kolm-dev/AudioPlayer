@@ -4,11 +4,12 @@ import { Line } from "rc-progress";
 
 interface PlayerProgressProps {
 	player: React.RefObject<HTMLAudioElement>;
+	playListLength: number;
 }
 
 type Time = number;
 
-export const PlayerProgress = ({ player }: PlayerProgressProps) => {
+export const PlayerProgress = ({ playListLength, player }: PlayerProgressProps) => {
 	const [progress, setProgress] = useState(0);
 	const [isReady, setIsReady] = useState(false);
 	const [duration, setDuration] = useState(0);
@@ -35,7 +36,7 @@ export const PlayerProgress = ({ player }: PlayerProgressProps) => {
 		return `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
 	};
 
-	const handleClick = (e : React.MouseEvent<HTMLElement>) => {
+	const handleClick = (e: React.MouseEvent<HTMLElement>) => {
 		if (player.current) {
 			const rect = (e.target as HTMLElement).getBoundingClientRect();
 			const offsetX = e.clientX - rect.left;
@@ -47,7 +48,7 @@ export const PlayerProgress = ({ player }: PlayerProgressProps) => {
 	useEffect(() => {
 		const audioElement = player.current;
 
-		if (audioElement) {
+		if (audioElement && audioElement.src.length > 0) {
 			audioElement.addEventListener("loadedmetadata", setAudioData);
 			audioElement.addEventListener("timeupdate", updateTime);
 
@@ -65,7 +66,7 @@ export const PlayerProgress = ({ player }: PlayerProgressProps) => {
 
 	return (
 		<div>
-			{isReady ? (
+			{isReady && playListLength > 0 ? (
 				<div>
 					<div className="progress_time">
 						{formatTime(currentTime)} / {formatTime(duration)}
@@ -82,7 +83,21 @@ export const PlayerProgress = ({ player }: PlayerProgressProps) => {
 					/>
 				</div>
 			) : (
-				<div>Loading...</div>
+				<div style={{ display: "none" }}>
+					<div className="progress_time">
+						{formatTime(0)} / {formatTime(0)}
+					</div>
+					<div className="progress_line">
+						<Line
+							percent={0}
+							strokeWidth={3}
+							strokeColor="pink"
+							trailWidth={3}
+							trailColor="lightgray"
+							strokeLinecap="butt"
+						/>
+					</div>
+				</div>
 			)}
 		</div>
 	);
