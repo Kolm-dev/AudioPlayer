@@ -16,6 +16,7 @@ HTML5 audio element.
 - Add audio files to the playlist
 - Adaptive UI
 - Remove audio from the playlist
+- Seek audio
 
 ## Installation
 
@@ -31,8 +32,9 @@ HTML5 audio element.
 2. Click on the `Play` button to play the audio
 3. Click on the `Pause` button to pause the audio
 4. Click on the `Stop` button to stop the audio
-5. Click on icon trash near title to remove the audio from the playlist
-6. Choose an audio file from the playlist to play it
+5. Click on progress bar to seek the audio
+6. Click on icon trash near title to remove the audio from the playlist
+7. Choose an audio file from the playlist to play it
 
 ## Demo
 
@@ -40,4 +42,4 @@ You can view a live demo [here](https://audio-player-lime.vercel.app/)
 
 Screenshot:
 
-![Audio Player](https://i2.paste.pics/404a8b7184cdf1b15db42b89ecbc0819.png)
+![Audio Player](https://i2.paste.pics/b0149317a0ea54aeaf0ce87c70bb3955.png?rand=BogyV5UuTb)
