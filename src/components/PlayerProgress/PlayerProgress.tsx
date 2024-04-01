@@ -35,6 +35,15 @@ export const PlayerProgress = ({ player }: PlayerProgressProps) => {
 		return `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
 	};
 
+	const handleClick = (e : React.MouseEvent<HTMLElement>) => {
+		if (player.current) {
+			const rect = (e.target as HTMLElement).getBoundingClientRect();
+			const offsetX = e.clientX - rect.left;
+			const newTime = (offsetX / rect.width) * player.current.duration;
+			player.current.currentTime = newTime;
+		}
+	};
+
 	useEffect(() => {
 		const audioElement = player.current;
 
@@ -51,7 +60,7 @@ export const PlayerProgress = ({ player }: PlayerProgressProps) => {
 				audioElement.removeEventListener("timeupdate", updateTime);
 			}
 		};
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [player]);
 
 	return (
@@ -69,6 +78,7 @@ export const PlayerProgress = ({ player }: PlayerProgressProps) => {
 						trailColor="lightgray"
 						strokeLinecap="butt"
 						className="progress_line"
+						onClick={handleClick}
 					/>
 				</div>
 			) : (
